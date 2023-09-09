@@ -1,4 +1,4 @@
-# LINKS
+# TUGAS 1
 
 [Link menuju aplikasi smart_waroeng](https://smart-waroeng.adaptable.app) <br>
 
@@ -43,6 +43,6 @@
     * Setelah itu, saya membuat file README.md di direktori lokal yang berisi jawaban setiap pertanyaan. Lalu, saya melakukan add, commit, push ke repository github. 
 
 
-2. Soal ketiga
+2. Soal kedua 
 
 
