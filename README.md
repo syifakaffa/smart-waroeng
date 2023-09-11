@@ -1,5 +1,9 @@
 # TUGAS 1
 
+Nama    : Syifa Kaffa Billah
+NPM     : 2206816430
+Kelas   : PBP-C
+
 [Link menuju aplikasi smart_waroeng](https://smart-waroeng.adaptable.app) <br>
 
 1. Cara mengimplementasikan setiap checklist:
@@ -38,7 +42,7 @@
         - Mengimport fungsi include dari django.urls ke dalam berkas urls.py di direktori smart_waroeng.
         - Menambahkan rute URL path('main/', include('main.urls')),  di dalam variabel urlpatterns yang ada di berkas urls.py tersebut.
 
-    * Setelah selesai, saya melakukan deployment ke Adaptable agar aplikasi bisa diakses secara umum. Saya menggunakan Python App Template sebagai template deployment, PostgreeSQl sebagai tipe basis data, dan python yang digunakan oleh saya 3.11. Setelah itu, saya memasukkan perintah python manage.py migrate && gunicorn shopping_list.wsgi pada Start Command, lalu memulai proses deployment aplikasi.
+    * Setelah selesai, saya melakukan deployment ke Adaptable agar aplikasi bisa diakses secara umum. Saya menggunakan Python App Template sebagai template deployment, PostgreeSQl sebagai tipe basis data, dan python yang digunakan oleh saya 3.11. Setelah itu, saya memasukkan perintah *python manage.py migrate && gunicorn smart_waroeng.wsgi* pada Start Command, lalu memulai proses deployment aplikasi.
 
     * Setelah itu, saya membuat file README.md di direktori lokal yang berisi jawaban setiap pertanyaan. Lalu, saya melakukan add, commit, push ke repository github. 
 
