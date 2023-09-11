@@ -1,7 +1,9 @@
 # TUGAS 1
 
 Nama    : Syifa Kaffa Billah
+
 NPM     : 2206816430
+
 Kelas   : PBP-C
 
 [Link menuju aplikasi smart_waroeng](https://smart-waroeng.adaptable.app) <br>
