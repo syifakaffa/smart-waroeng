@@ -53,11 +53,11 @@ Kelas   : PBP-C
 <img width="571" alt="image" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/7a864266-f06d-4ca0-948d-98dec77997ae">
 
 
-4. Virtual environment digunakan dalam membuat aplikasi web berbasis Django dengan alasan supaya ketika kita menggunakan versi package Django yang berbeda, bisa terhindar dari adanya konflik akibat dependensi antar versi package yang berbeda. *Virtual environment* sendiri merupakan tools yang digunakan untuk membuat lingkungan virtual python terisolasi (tertutup), dalam artian dunia luar tidak bisa mengaksesnya, sebab aplikasi yang menggunakan virtual environment memiliki modulnya sendiri. Selain itu, adanya virtual environment memudahkan kita untuk mengelola dependensi proyek secara independen, sehingga pengembang dapat menginstal, menghapus, atau memperbarui paket-paket dalam virtual environment tanpa mempengaruhi proyek lain. 
+3. Virtual environment digunakan dalam membuat aplikasi web berbasis Django dengan alasan supaya ketika kita menggunakan versi package Django yang berbeda, bisa terhindar dari adanya konflik akibat dependensi antar versi package yang berbeda. *Virtual environment* sendiri merupakan tools yang digunakan untuk membuat lingkungan virtual python terisolasi (tertutup), dalam artian dunia luar tidak bisa mengaksesnya, sebab aplikasi yang menggunakan virtual environment memiliki modulnya sendiri. Selain itu, adanya virtual environment memudahkan kita untuk mengelola dependensi proyek secara independen, sehingga pengembang dapat menginstal, menghapus, atau memperbarui paket-paket dalam virtual environment tanpa mempengaruhi proyek lain. 
 
     Terkait pertanyaan kedua, kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan *virtual environment*. Namun, alangkah baiknya setiap aplikasi yang dibuat menggunakan *virtual environment*, apalagi jika aplikasi yang dibuat berskala besar. Agar hal-hal terkait dependensi bisa dihindari.
 
-5. Perbedaan MVC, MVT, dan MVVM:
+4. Perbedaan MVC, MVT, dan MVVM:
     MVC, MVT, dan MVVM merupakan jenis dari arsitektur yang digunakan dalam pengembangan web yang bertujuan untuk memisahkan komponen-komponen utama aplikasi seperti logika aplikasi, tampilan, dan logika presentasi, sehingga pengelolaan kodenya lebih terstruktur dan mudah dipelihara. Perbedaan antara ketiganya terletak pada penempatan komponen logika presentasi dan penghubung antara View dan Model ditempatkan.
     *  **MVC (Model-View-Controller)**: 
         - Model: Bertanggung jawab dalam mengatur data dan logika aplikasi.
