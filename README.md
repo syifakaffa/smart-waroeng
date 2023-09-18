@@ -41,28 +41,39 @@ Kelas   : PBP-C
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 * Membuat template dasar pada file base.html. Lalu, mengubah setting.py agar base.html terdeteksi sebagai template dengan add *'DIRS': [BASE_DIR / 'templates'],*. di bagian TEMPLATES. Setelah itu, saya menyesuaikan konten yang ada di main.html sesuai template yg ada di base.html. 
-[ ] Membuat input form untuk menambahkan objek model pada app sebelumnya.
-- Membuat file forms.py yang bisa menerima data produk baru dengan modelnya *Product* dan fieldsnya ada *name*, *available amount*, *price*, dan *description*.
-- Pada file views.py di main, saya membuat fungsi *create_product* dengan request method nya POST, agar data otomatis tersimpan saat di submit formnya.
-[ ] Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
-- Mengimport HttpResponse dan serializers.
--HTML: Fungsi show_main yang sebelumnya, saya tambahkan *products* pada *context* yang berisi semua object yang diinput pada form. Untuk mengambil semua objectnya, saya menggunakan *Product.objects.all()*.
-- XML: membuat fungsi *show_xml* yang dapat menerima request dan akan mereturn HttpResponse dengan parameter seperti berikut: 
+* Membuat input form untuk menambahkan objek model pada app sebelumnya.
+    - Membuat file forms.py yang bisa menerima data produk baru dengan modelnya *Product* dan fieldsnya ada *name*, *available amount*, *price*, dan *description*.
+    - Pada file views.py di main, saya membuat fungsi *create_product* dengan request method nya POST, agar data otomatis tersimpan saat di submit formnya.
+* Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+    - Mengimport HttpResponse dan serializers.
+    -HTML: Fungsi show_main yang sebelumnya, saya tambahkan *products* pada *context* yang berisi semua object yang diinput pada form. Untuk mengambil semua objectnya, saya menggunakan *Product.objects.all()*.
+    - XML: membuat fungsi *show_xml* yang dapat menerima request dan akan mereturn HttpResponse dengan parameter seperti berikut: 
     ```def show_xml(request):
         data = Product.objects.all()
-        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")```
-- JSON (show_json): sama seperti xml, hanya saja pada bagian serializers dan content_type diubah menjadi json.
-- JSON dan XML by id: mirip seperti tanpa id, tetapi object yang dicari difilter berdasarkan id. Kodenya hanya berbeda di bagian *data = Product.objects.filter(pk=id)*. 
-[ ] Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
-- Mengimpor 4 fungsi yang sebelumnya dibuat dan menambahkan 4 path URL (HTML sudah dilakukan di tugas 2) di urls.py bagian urlpatterns untuk keempat fungsi yang baru ditambahkan pada views.py sebelumnya.
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+    ```
+    - JSON (show_json): sama seperti xml, hanya saja pada bagian serializers dan content_type diubah menjadi json.
+    - JSON dan XML by id: mirip seperti tanpa id, tetapi object yang dicari difilter berdasarkan id. Kodenya hanya berbeda di bagian *data = Product.objects.filter(pk=id)*. 
+* Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+    - Mengimpor 4 fungsi yang sebelumnya dibuat dan menambahkan 4 path URL (HTML sudah dilakukan di tugas 2) di urls.py bagian urlpatterns untuk keempat fungsi yang baru ditambahkan pada views.py sebelumnya.
 
 
 5. Screenshot dari hasil akses URL pada Postman
 * Format HTML
+  <img width="960" alt="Screenshot 2023-09-18 153053" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/b19c31bc-5c78-4bba-8845-59d56b772b07">
+
 * Format JSON
+  <img width="960" alt="Screenshot 2023-09-16 235358" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/078abe84-96f5-41c5-9c4c-4bcab1e484e8">
+
 * Format XML
+  <img width="960" alt="Screenshot 2023-09-16 235350" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/8a9acd1c-eb4c-48d1-8122-25c55d265fa0">
+
 * Format XML by Id
+  <img width="960" alt="Screenshot 2023-09-16 235425" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/20df171f-e1d4-4da8-93ce-5ed3ac2ceee3">
+
 * Format JSON by Id
+  <img width="960" alt="Screenshot 2023-09-16 235411" src="https://github.com/syifakaffa/smart-waroeng/assets/124903174/d877e23c-5b97-4563-800a-ed983f371c9b">
+
 
 
 # TUGAS 2
