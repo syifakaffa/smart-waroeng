@@ -1,4 +1,4 @@
-# TUGAS 2
+# TUGAS 3
 
 Nama    : Syifa Kaffa Billah
 
@@ -6,6 +6,66 @@ NPM     : 2206816430
 
 Kelas   : PBP-C
 
+
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+* Dari segi Metode Pengiriman Data:
+    - Method POST tidak menampilkan data yang dikirim pada URL, tetapi langsung mengirimkan data atau nilai ke action untuk ditampung.
+    - Sedangkan method GET akan menampilkan data/nilai pada URL (bisa dilihat semua orang yang mengakses), kemudian baru akan ditampung oleh action.
+* Dari segi Kemampuan Pengiriman Data:
+    - Method POST tidak memiliki batasan jumlah karakter/data yang ingin dikrimkan.
+    - Method GET memiliki batasan maksimal karakter, yaitu 2047 karakter.
+* Dari segi Preferensi Pengugunaan:
+    - Method POST digunakan untuk mengirim data yang bersifat sensitif dan penting, seperti password. Biasanya data tersebut juga akan diperbaharui atau dihapus dari server.
+    - Method GET bisa digunakan jika datanya bersifat public dan ingin tertampil di URL, misal ketika ingin melakukan pencarian (datanya diambil dari server).
+* Dari segi Keamanan:
+    - Method POST lebih aman karena dilindungi oleh token CSRF (Cross-Site Request Forgery) untuk mencegah serangan CSRF dan data tidak terlihat di URL.
+    - Method GET kurang aman, karena datanya terlihat di URL.
+
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+* Fungsi utama:
+    - XML dan JSON digunakan untuk menyimpan dan mentransfer data (mengambil datanya dari server).
+    - HTML digunakan untuk menjelaskan bagaimana suatu data ditampilkan dan juga untuk menentukan struktur suatu page, misal menampilkan konten di browser. Jadi, lebih kepada tampilan web.
+* Human-Readability:
+    - XML: Karena memiliki struktur yang kompleks, XML lebih sulit untuk dibaca manusia.
+    - JSON: Lebih difokuskun pada representasi data yang mudah dibaca manusia dan lebih sederhana strukturnya (terdiri dari pasangan key-value).
+    - HTML: Cukup mudah untuk dibaca oleh manusia karena penyusunannya berdasarkan hierarki dan menggunakan tag yang deskriptif, seperti '<p>' untuk paragraf.
+
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+- Representasi datanya lebih mudah dibaca oleh manusia karena strukturnya lebih sederhana (menggunakan pasangan key-value).
+- JSON mendukung berbagai jenis data, seperti teks, angka, objek, dll.
+- JSON lebih ringan strukturnya, penguraian servernya mudah dilakukan oleh berbagai bahasa pemrogaman khususnya JavaScript, dan memiliki overhead yang lebih rendah dibandingkan XML.
+- Cocok untuk penggunaan di aplikasi web yang memanfaatkan JavaScript dan AJAX(Asynchronous JavaScript and XML).
+
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+* Membuat template dasar pada file base.html. Lalu, mengubah setting.py agar base.html terdeteksi sebagai template dengan add *'DIRS': [BASE_DIR / 'templates'],*. di bagian TEMPLATES. Setelah itu, saya menyesuaikan konten yang ada di main.html sesuai template yg ada di base.html. 
+[ ] Membuat input form untuk menambahkan objek model pada app sebelumnya.
+- Membuat file forms.py yang bisa menerima data produk baru dengan modelnya *Product* dan fieldsnya ada *name*, *available amount*, *price*, dan *description*.
+- Pada file views.py di main, saya membuat fungsi *create_product* dengan request method nya POST, agar data otomatis tersimpan saat di submit formnya.
+[ ] Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+- Mengimport HttpResponse dan serializers.
+-HTML: Fungsi show_main yang sebelumnya, saya tambahkan *products* pada *context* yang berisi semua object yang diinput pada form. Untuk mengambil semua objectnya, saya menggunakan *Product.objects.all()*.
+- XML: membuat fungsi *show_xml* yang dapat menerima request dan akan mereturn HttpResponse dengan parameter seperti berikut: 
+    ```def show_xml(request):
+        data = Product.objects.all()
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")```
+- JSON (show_json): sama seperti xml, hanya saja pada bagian serializers dan content_type diubah menjadi json.
+- JSON dan XML by id: mirip seperti tanpa id, tetapi object yang dicari difilter berdasarkan id. Kodenya hanya berbeda di bagian *data = Product.objects.filter(pk=id)*. 
+[ ] Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+- Mengimpor 4 fungsi yang sebelumnya dibuat dan menambahkan 4 path URL (HTML sudah dilakukan di tugas 2) di urls.py bagian urlpatterns untuk keempat fungsi yang baru ditambahkan pada views.py sebelumnya.
+
+
+5. Screenshot dari hasil akses URL pada Postman
+* Format HTML
+* Format JSON
+* Format XML
+* Format XML by Id
+* Format JSON by Id
+
+
+# TUGAS 2
 [Link menuju aplikasi smart_waroeng](https://smart-waroeng.adaptable.app) <br>
 
 1. Cara mengimplementasikan setiap checklist:
@@ -73,7 +133,3 @@ Kelas   : PBP-C
         - Model: Bertanggung jawab dalam mengatur data dan logika aplikasi.
         - View: bertanggung jawab untuk menampilkan data kepada pengguna.
         - View Model: Sebagai penghubung antara View dan Model. ViewModel juga bertanggung jawab untuk merubah data dari model ke bentuk yang sesuai untuk tampilan pengguna.
-
-
-
-
