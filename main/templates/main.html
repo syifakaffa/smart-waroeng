@@ -9,7 +9,17 @@
     <h5>Class:</h5>
     <p>{{class}}</p>
 
-    <table>
+    <style>
+        th{
+            text-align: center;
+            padding: 10px;
+        }
+        td{
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    </style>
+    <table border="1" cellspacing="0" cellpadding="0">
         <tr>
             <th>Name</th>
             <th>Available Amount</th>
@@ -23,7 +33,7 @@
         {% for product in products %}
             <tr>
                 <td>{{product.name}}</td>
-                <td>{{product.amount}}</td>
+                <td style ="text-align: center">{{product.amount}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
