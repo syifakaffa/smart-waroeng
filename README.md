@@ -40,7 +40,8 @@ Kelas   : PBP-C
 
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
-* Membuat template dasar pada file base.html. Lalu, mengubah setting.py agar base.html terdeteksi sebagai template dengan add *'DIRS': [BASE_DIR / 'templates'],*. di bagian TEMPLATES. Setelah itu, saya menyesuaikan konten yang ada di main.html sesuai template yg ada di base.html. 
+* Membuat template dasar pada file base.html. Lalu, mengubah setting.py agar base.html terdeteksi sebagai template dengan add *'DIRS': [BASE_DIR / 'templates'],*. di bagian TEMPLATES. Setelah itu, saya menyesuaikan konten yang ada di main.html sesuai template yg ada di base.html.
+* Saya juga sedikit mengedit main.html agar tampilan tabel diberi border untuk setiap selnya. Bagian ini saya tambahkan di bagian style. 
 * Membuat input form untuk menambahkan objek model pada app sebelumnya.
     - Membuat file forms.py yang bisa menerima data produk baru dengan modelnya *Product* dan fieldsnya ada *name*, *available amount*, *price*, dan *description*.
     - Pada file views.py di main, saya membuat fungsi *create_product* dengan request method nya POST, agar data otomatis tersimpan saat di submit formnya.
