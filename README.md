@@ -1,11 +1,39 @@
-# TUGAS 3
-
 Nama    : Syifa Kaffa Billah
 
 NPM     : 2206816430
 
 Kelas   : PBP-C
 
+# TUGAS 4
+
+ 1. **Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
+
+    --> UserCreationForm merupakan modul bawaan Django yang dapat membuat user baru pada suatu _web aplications_. yang mana di dalamnya ada field username, password1, dan password2 (_confirm password_).
+    * **Kelebihan**: Mudah digunakan. Kita bisa langsung menggunakannya dan menyediakan fitur validasi otomatis, seperti format username yang benar, password yang sesuai dengan kebijakan keamanan, dan password konfirmasi yang harus sama dengan password sebelumnya.
+    * **Kekurangan**: Tidak menyediakan field selain username, password1, dan password2. Sehingga jika ingin menambahkan field lain seperti email untuk verivikasi akun, _developer_ harus memodifikasi UserCreationForm atau membuat registration form baru dari awal.
+    
+ 2. **Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?**
+
+    * **Autentikasi** : Lebih kepada proses verivikasi pengguna, apakah sesuai username dan password yang dimasukkan dengan yang ada di database. 
+    * **Otorisasi**: Prose menentukan hal-hal apa saja yang bisa dilakukan oleh si user yang sudah terautentikasi tadi. Jadi, lebih kepada izin akses yang diberikan ke si pengguna tersebut.
+    * **Kenapa penting?**: Tentu autentikasi dan otorisasi ini penting untuk menjaga kemanan web aplikasi yang dibuat agar tidak sembarang orang bisa masuk. Selain itu, adanya otorisasi membuat data yang dimiliki terjaga privasinya karena hanya user yang diautentikasi saja yang punya akses ke datanya masing-masing.
+    
+ 3. **Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?**
+
+    Cookie adalah sepotong data (berupa teks) yang disimpan di sisi _client_ yang digunakan untuk mengelola informasi sesi pengguna (misalnya data login), sehingga HTTP bisa melakukan _holding_ state__. Cara kerjanya sendiri pertama-tama permintaan akan dikirim ke server oleh browser pengguna yang kemudian server tersebut akan merespons dengan memberikan satu atau lebih cookie ke browser. Setelah menerima cookie, browser akan menyimpannya, sehingga setiap kali _request_ dibuat ke server, browser akan mengirimkan cookie ke server sampai kadaluwarsanya habis. Saat sudah kadaluwarsa cookie tersebut akan dihapus dari browser.
+    
+    
+ 4. **Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?**
+
+    Pada umumnya, penggunaan cookies untuk mengelola data sesi pengguna kurang aman, sebab bisa saja informasi-informasi yang disimpan disalahgunakan. Beberapa porensial resiko yang haris diwaspadai, yaitu:
+    - Melacak aktivitas pengguna dan menyimpan data pengguna tanpa izin.
+    - _Session fixation_ dan _session hijacking_ yang mana memaksa pengguna untuk menggunakan _session id_ penyerang,
+    - Menerima _cookies_ dari situs palsu atau sumber yang tidak kredibel: dapat terkena tindakan _phising_.
+    - Memiliki _cookies_ dengan waktu kadaluwarsa yang panjang: berbahaya sebab dapat diretas oleh pihak ketiga.
+
+    Jika ingin lebih aman, sebaiknya _cookies_ tidak digunakan secara langsung untuk mengelola semua informasi pengguna. Gunakan _session id_ yg unik sebagai data yang dikirim pada _cookies_ agar lebih aman.
+
+# TUGAS 3
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?
 * Dari segi Metode Pengiriman Data:
