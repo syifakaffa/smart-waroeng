@@ -33,6 +33,15 @@ Kelas   : PBP-C
 
     Jika ingin lebih aman, sebaiknya _cookies_ tidak digunakan secara langsung untuk mengelola semua informasi pengguna. Gunakan _session id_ yg unik sebagai data yang dikirim pada _cookies_ agar lebih aman.
 
+**5. Cara pengimplementasian checklist:**
+* Pertama saya membuat 3 fungsi baru, yaitu:
+  - register untuk membuat akun. Di dalamnya menggunakan UserCreationForm Django untuk menangani pembuatan akun baru.
+  - login_user untuk proses login. Di dalamnya saya menggunakan function _authenticate_ dan _login_ yang diimport dari Django untuk menghandle autentikasi dan login saat autentikasi berhasil.
+  - logout_user untuk logout dari halaman utama.
+* Membuat berkas register.html dan login.html untuk tampilan login dan registernya. Dan menambahkan tampilan tombol logout di berkas main.html.
+* Membuat routing tampilan login, logout, dan register.
+* Merestriksi akses halaman Main agar login terlebih dahulu dengan menambahkan kode @login_required(login_url='/login')
+
 # TUGAS 3
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?
