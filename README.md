@@ -40,8 +40,22 @@ Kelas   : PBP-C
   - logout_user untuk logout dari halaman utama.
 * Membuat berkas register.html dan login.html untuk tampilan login dan registernya. Dan menambahkan tampilan tombol logout di berkas main.html.
 * Membuat routing tampilan login, logout, dan register.
-* Merestriksi akses halaman Main agar login terlebih dahulu dengan menambahkan kode @login_required(login_url='/login')
+* Merestriksi akses halaman Main agar login terlebih dahulu dengan menambahkan kode @login_required(login_url='/login') di atas fungsi show_main.
+* Setelah menjalankan runserver, saya membuat dua akun baru di section register. Berikut akunnya:
+   - uname1: syifakaffa; pass: pbpsyifa
+   - uname2: syifakaffa1; pass: pbpsyifa1
 
+* Menghubungkan model Product dengan User:
+  - Mengimport modul User dari django.contrib.auth.models, lalu menambahkan model user ke class Product dengan menggunakan code _user = models.ForeignKey(User, on_delete=models.CASCADE)_
+  - Mengedit fungsi create_product agar Django tidak langsung menyimpan objek yg di buat ke database.
+  - Mengubah fungsi show_main pada bagian 'name' agar yang muncul merupakan username yang sedang login.
+  - Melakukan makemigration dan migrate.
+* Mengimpor date time. Lalu di login_user membuat fungsi baru yang dapat menambahkan cookie.
+  - Menambahkan _last_login_ pada show_main
+  - Mengubah _logout_user_ untuk menghapus cookie setiap kali logout
+  - Menambahkan teks last login pada main.html agar muncul di tampilan layar.
+ 
+    
 # TUGAS 3
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?
