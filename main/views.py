@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from main.models import Product
 from main.forms import ProductForm
@@ -16,12 +16,14 @@ import datetime
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    jumlah_product = len(products)  #untuk mengetahui jumlah product si user.
 
     context = {
         'name': request.user.username, # Nama kamu
         'class': 'PBP C', # Kelas PBP kamu
+        'jumlah_item': jumlah_product,
         'products': products,
-        'last_login': request.COOKIES['last_login'],
+        'last_login': request.COOKIES.get('last_login'),
     }
 
     return render(request, "main.html", context)
@@ -87,3 +89,28 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def add_one(request, product_id=None):
+    if request.method == 'POST':
+        # Tambah jumlah stok produk sebanyak 1
+        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
+        product = Product.objects.get(id=product_id) #untuk dapat product
+
+        product.amount += 1
+        product.save()
+        return redirect('main:show_main')
+    
+    return render(request, 'main.html')
+
+def dec_one(request, product_id=None):
+    if request.method == 'POST':
+        # Tambah jumlah stok produk sebanyak 1
+        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
+        product = Product.objects.get(id=product_id) #untuk dapat product
+
+        if product.amount > 0:
+            product.amount -= 1
+            product.save()
+        return redirect('main:show_main')
+    
+    return render(request, 'main.html')

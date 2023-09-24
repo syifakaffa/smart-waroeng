@@ -15,14 +15,24 @@
             padding: 10px;
         }
         td{
-            border: 1px solid #000;
             padding: 10px;
         }
+        tr{
+            border-bottom: 1px solid #000;
+        }
+        table{
+            border-collapse: collapse;
+        }
     </style>
-    <table border="1" cellspacing="0" cellpadding="0">
+
+    <h5>Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h5>
+
+    <table>
         <tr>
             <th>Name</th>
             <th>Available Amount</th>
+            <th>Add One</th>
+            <th>Dec One</th>
             <th>Price</th>
             <th>Description</th>
             <th>Date Added</th>
@@ -34,7 +44,21 @@
             <tr>
                 <td>{{product.name}}</td>
                 <td style ="text-align: center">{{product.amount}}</td>
-                <td>{{product.price}}</td>
+                <td style ="text-align: center">
+                    <form method="post" action="{% url 'main:add_one' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button class= "add_btn" type="submit">+</button>
+                    </form>
+                </td>
+                <td style ="text-align: center">
+                    <form method="post" action="{% url 'main:dec_one' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button class="dec_btn" type="submit">-</button>
+                    </form>
+                </td>
+                <td>Rp{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
             </tr>
