@@ -54,6 +54,13 @@ Kelas   : PBP-C
   - Menambahkan _last_login_ pada show_main
   - Mengubah _logout_user_ untuk menghapus cookie setiap kali logout
   - Menambahkan teks last login pada main.html agar muncul di tampilan layar.
+
+* Membuat Soal Bonus:
+  - Membuat fungsi add_one dan dec_one di views.py yang tidak jauh berbeda kode nya. Pertama saya mencari product berdasarkan id yang tombolnya dipencet. Lalu menambahkan logika pengurangan atau pengurangan didalamnya.
+  - Membuat routing url add_one dan dec_one.
+  - Membuat tampilan tombolnya di main.html
+  - Membuat fungsi delete_product di views.py yang tidak jauh berebeda dengan add_one dan dec_one. Hanya berbeda di bagian product.save() tidak dibuat pada delete product.
+  - Membuat routing url delete_product di urls.py dan membuat tampilan tombolnya di main.html.
  
     
 # TUGAS 3
