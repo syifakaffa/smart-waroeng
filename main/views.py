@@ -114,3 +114,14 @@ def dec_one(request, product_id=None):
         return redirect('main:show_main')
     
     return render(request, 'main.html')
+
+def delete_product(request, product_id=None):
+    if request.method == 'POST':
+        #hapus product
+        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
+        product = Product.objects.get(id=product_id) #untuk dapat product
+        product.delete()    #otomatis hapus product
+        return redirect('main:show_main')
+    
+    return render(request, 'main.html')
+

@@ -48,19 +48,26 @@
                     <form method="post" action="{% url 'main:add_one' product.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button class= "add_btn" type="submit">+</button>
+                        <button type="submit">+</button>
                     </form>
                 </td>
                 <td style ="text-align: center">
                     <form method="post" action="{% url 'main:dec_one' product.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button class="dec_btn" type="submit">-</button>
+                        <button type="submit">-</button>
                     </form>
                 </td>
                 <td>Rp{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
+                 <td style ="text-align: center">    <!--tombol delete -->
+                    <form method="post" action="{% url 'main:delete_product' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit">🗑</button>
+                    </form>
+                </td>
             </tr>
         {% endfor %}
     </table>
