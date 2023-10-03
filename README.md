@@ -57,7 +57,15 @@ b. Bootstrap:
 5.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
 - Menambahkan bootstrap ke aplikasi.
 - Melakukan design pada halaman login. Disini saya membuat 1 card untuk loginnya, dimana ada header, body, dan footernya. Lalu baground color juga saya ubah.
-- 
+- Membuat design halaman create product. Saya mengubah background color dan menambahkan margin bottom, up, right, dan left pada body nya.
+- Membuat design halaman register. Saya menggunakan 1 card seperti pada halaman login, dimana pada card tersebut ada header dan bodynya. Saya tambahkan margin dan mengubah background color pada bagian tag body.
+- Mmebuat design halaman main:
+    - Membuat navigation bar yang diambil dari bootstrap. Di dalamnya terdapat nama brand (SmartWaroeng) pada ujung kiri atas, dan untuk navbar itemnya, ada logout dan add new product. Navbar ini saya buat dalam container fluid agar bisa menyesuaikan dengan layar konten nya.
+    - Pada navbar tersebut, saya juga buat button navbar togler yang akan muncul saat ukuran tampilan layarnya kecil.
+    - Saya buat class konten yang berisi konten2 pada inventori saya. Saya membuat card yang ada di dalam loop product, sehingga jumlah card product akan bertambah sesuai dengan jumlah barang yang dimiliki dalam inventori.
+    - Untuk cardya, saya buat ada header untuk nama product, body untuk proce, deskripsi, dan jumlah serta beberapa button edit, serta footer cardnya untuk date addedd barangnya.
+    - Saya juga mengubah baground color pada body dan membuat agar cardnya akan mengisi ke horizontal kanan dulu baru ke vertikal bawah.
+  - Mengerjakan readme dan melakukan add commit push ke github.    
 
 # TUGAS 4
 
