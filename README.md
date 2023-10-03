@@ -4,6 +4,61 @@ NPM     : 2206816430
 
 Kelas   : PBP-C
 
+# TUGAS 5
+
+1.  **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+
+    - **Element Selector**: Untuk mengubah properti untuk semua elemen yang mempunya tag yang sama, misalnya heading (h1) ingin warna biru semuanya. Cocok digunakan saat ingin mengaplikasikan style umum ke semua elemen dengan tipe yang sama.
+    - **ID Selector**: Untuk memilih elemen berdasarkan id nya. Id pada setiap elemen bersifat unik, jadi selector ini cocok digunakan saat ingin merubah style hanya pada elemen spesifik saja.
+    - **Class Selector**: Digunakan untuk memilih atribut "class" dimana setiap elemen dapat memiliki banyak kelas. Cocok digunakan saat mengubah style pada sekelompok elemen yang memiliki karakteristik yang sama.
+
+      
+2.  **Jelaskan HTML5 Tag yang kamu ketahui.**
+
+- &lt;p&gt; --> untuk membuat pargraf
+- &lt;title&gt; --> untuk membuat judul sebuah page
+- &lt;body&gt; ---> untuk membuat badan sebuah halaman
+- &lt;h1&gt; sampai &lt;h6&gt; --> untuk membuat heading dengan ukuran yang berbeda sesuai angkanya.
+- &lt;b&gt; --> untuk membuat teks yang bold
+- &lt;style&gt; --> untuk mengatur style elemen menggunakan css
+
+
+3.  **Jelaskan perbedaan antara margin dan padding.**
+
+a. Margin:
+- Mengosongkan area di sekitar border atau elemen.
+- Merupakan ruang antara elemen dengan elemen lainnya.
+- Hanya mengatur jarak dan tidak mengatur latar belakang atau warna.
+- Mengatur tata letak dari sisi luarnya.
+
+b. Padding:
+- Mengosongkan area di sekitar konten.
+- Ruang antara konten elemen dengan tepi elemennya.
+- Mengatur latar belakang dan warna juga untuk elemennya.
+- Mengatur tata letak dari sisi dalam.
+
+
+4.  **Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+
+a. Tailwind:
+- Membangun tampilan dengan menggabungkan kelas-kelas utilitas yang udah didefinisikan sebelumnya.
+- file CSS nya lebih kecil dan hanya akan memuat kelas-kelas utilitas yang ada.
+- Memiliki memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek
+- Lebih sulit untuk dipelajari, terrutama bagi pemula.
+
+b. Bootstrap:
+- Menggunakan style dan komponen yang sudah didefinisikan yang mana memiliki tampilan yang sudah jadi dan bisa langsung digunakan.
+- Memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena termasuk banyak komponen yang telah didefinisikan.
+- Sering kali menghasilkan tampilan yang lebih konsisten di seluruh proyek karena menggunakan komponen yang telah didefinisikan.
+- Mudah dipelajari, khususnya untuk pemula karena sudah ada komponen yang telah didefinisikan.
+
+
+
+5.  **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+- Menambahkan bootstrap ke aplikasi.
+- Melakukan design pada halaman login. Disini saya membuat 1 card untuk loginnya, dimana ada header, body, dan footernya. Lalu baground color juga saya ubah.
+- 
+
 # TUGAS 4
 
  1. **Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
