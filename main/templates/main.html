@@ -1,92 +1,101 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Smart Waroeng Page</h1>
-
-    <h5>Name:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-
     <style>
-        th{
-            text-align: center;
-            padding: 10px;
+        .navbar-brand {
+            font-family: "forte", sans-serif;
         }
-        td{
-            padding: 10px;
+        body {
+        background: #007bff;
+        background: linear-gradient(to right, #EAD6EE, #A0F1EA);
         }
-        tr{
-            border-bottom: 1px solid #000;
+        .card-header{
+            font-weight: bold;
         }
-        table{
-            border-collapse: collapse;
+        .konten{
+            margin-left: 20px; /* Atur margin sebesar 20 piksel ke sisi kiri */
+            margin-right: 5px; /* Atur margin sebesar 20 piksel ke sisi kanan */
+            margin-top: 5px; /* Atur margin sebesar 20 piksel ke sisi atas */
+            margin-bottom: 5px; /* Atur margin sebesar 20 piksel ke sisi bawah */
         }
+        
+
     </style>
 
-    <h5>Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h5>
+    <!-- /* Navigation bar*/ -->
 
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Available Amount</th>
-            <th>Add One</th>
-            <th>Dec One</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+        <div class="container-fluid">           {% comment %} ini biar lebar konten nya nyesuain layar {% endcomment %}
+            <a class="navbar-brand" href="#">
+                SmartWaroeng
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'main:logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'main:create_product' %}">Add New Product</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div> 
+    </nav>
+
+    <div class="konten">
+        <h5>Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h5>
     
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
-        {% for product in products %}
-            <tr>
-                <td>{{product.name}}</td>
-                <td style ="text-align: center">{{product.amount}}</td>
-                <td style ="text-align: center">
-                    <form method="post" action="{% url 'main:add_one' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit">+</button>
-                    </form>
-                </td>
-                <td style ="text-align: center">
-                    <form method="post" action="{% url 'main:dec_one' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit">-</button>
-                    </form>
-                </td>
-                <td>Rp{{product.price}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.date_added}}</td>
-                 <td style ="text-align: center">    <!--tombol delete -->
-                    <form method="post" action="{% url 'main:delete_product' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit">🗑</button>
-                    </form>
-                </td>
-            </tr>
+        <div class="container">
+            <div class="row">
+                <!-- looping sebanyak jumlah product -->
+                {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card border-dark mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center">{{product.name}}</div>
+                        <div class="card-body text-dark">
+                            <p class="card-text"> Price: Rp{{product.price}}</p>
+                            <p class="card-text">{{product.description}}</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text"> Jumlah: {{product.amount}}</p>
+                                <a style ="text-align: center"> <!--tombol tambah 1-->
+                                    <form method="post" action="{% url 'main:add_one' product.id %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <button type="submit">+</button>
+                                    </form>
+                                </a>
+                                <a style ="text-align: center"> <!--tombol kurang 1-->
+                                    <form method="post" action="{% url 'main:dec_one' product.id %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <button type="submit">-</button>
+                                    </form>
+                                </a>
+                                <a style ="text-align: center">    <!--tombol delete -->
+                                    <form method="post" action="{% url 'main:delete_product' product.id %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <button type="submit">🗑</button>
+                                    </form>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">Date added: {{product.date_added}}</div>
+                    </div>
+                </div>
         {% endfor %}
-    </table>
     
-    <br />
+            </div>
+        </div>
     
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
-        </button>
-    </a>
-
-    <br />
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-    
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
+        <br />
+        <h5>Sesi terakhir login: {{ last_login }}</h5>
+    </div>
 
 {% endblock content %}

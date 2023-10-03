@@ -6,39 +6,73 @@
 
 {% block content %}
 
+<style>
+    body {
+        background: #007bff;
+        background: linear-gradient(to right, #EAD6EE, #A0F1EA);
+        margin-left: 100px; /* Atur margin sebesar 20 piksel ke sisi kiri */
+        margin-right: 100px; /* Atur margin sebesar 20 piksel ke sisi kanan */
+        margin-top: 150px; /* Atur margin sebesar 20 piksel ke sisi atas */
+        margin-bottom: 150px; /* Atur margin sebesar 20 piksel ke sisi bawah */
+    }
+
+    .card-img-left {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: scroll center url('https://source.unsplash.com/WEQbe2jBg40/414x512');
+    background-size: cover;
+    }
+
+    .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    }
+</style>
+
 <div class = "login">
-
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center bg-transparent border-success">Login</div>
+                    <div class="card-body text-success">
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <table>
+                                <tr>
+                                    <td>Username: </td>
+                                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                                </tr>
+                                        
+                                <tr>
+                                    <td>Password: </td>
+                                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                                </tr>
                     
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input class="btn login_btn" type="submit" value="Login"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+                    <div class="card-footer bg-transparent border-success">
+                        {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}     
+                            
+                        Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 

@@ -5,30 +5,49 @@
 {% endblock meta %}
 
 {% block content %}  
+<style>
+    body{
+        background: #007bff;
+        background: linear-gradient(to right, #EAD6EE, #A0F1EA);
+        margin-left: 20px; /* Atur margin sebesar 20 piksel ke sisi kiri */
+        margin-right: 20px; /* Atur margin sebesar 20 piksel ke sisi kanan */
+        margin-top: 20px; /* Atur margin sebesar 20 piksel ke sisi atas */
+        margin-bottom: 20px; /* Atur margin sebesar 20 piksel ke sisi bawah */
+    }
+
+</style>
 
 <div class = "login">
-    
-    <h1>Register</h1>  
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card border-success mb-3">
+                    <div class="card-header text-center bg-transparent border-success">Register</div>
+                    <div class="card-body text-success">
+                        <form method="POST" >  
+                            {% csrf_token %}  
+                            <table>  
+                                {{ form.as_table }}  
+                                <tr>  
+                                    <td></td>
+                                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+                                </tr>  
+                            </table>  
+                        </form>
+                
+                        {% if messages %}  
+                            <ul>   
+                                {% for message in messages %}  
+                                    <li>{{ message }}</li>  
+                                    {% endfor %}  
+                            </ul>   
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
-</div>  
 
 {% endblock content %}
