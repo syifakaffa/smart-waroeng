@@ -65,6 +65,7 @@ b. Bootstrap:
     - Saya buat class konten yang berisi konten2 pada inventori saya. Saya membuat card yang ada di dalam loop product, sehingga jumlah card product akan bertambah sesuai dengan jumlah barang yang dimiliki dalam inventori.
     - Untuk cardya, saya buat ada header untuk nama product, body untuk proce, deskripsi, dan jumlah serta beberapa button edit, serta footer cardnya untuk date addedd barangnya.
     - Saya juga mengubah baground color pada body dan membuat agar cardnya akan mengisi ke horizontal kanan dulu baru ke vertikal bawah.
+  - Menambahkan tombol edit product dan membuat berkas html baru yaitu edit_product. Tampilannya saya design sama seperti create_product.
   - Mengerjakan readme dan melakukan add commit push ke github.    
 
 # TUGAS 4
