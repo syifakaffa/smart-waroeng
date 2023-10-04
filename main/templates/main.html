@@ -18,6 +18,11 @@
             margin-top: 5px; /* Atur margin sebesar 20 piksel ke sisi atas */
             margin-bottom: 5px; /* Atur margin sebesar 20 piksel ke sisi bawah */
         }
+        #lastLogin{
+            font-family: "times new roman", sans-serif;
+            font-size: medium;
+            justify-content: flex-end;
+        }
         
 
     </style>
@@ -45,11 +50,17 @@
                 </ul>
             </div>
 
+            <div>
+                <h5 id="lastLogin">Sesi terakhir login: {{ last_login }}</h5>
+            </div>
+
         </div> 
     </nav>
 
     <div class="konten">
         <h5>Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h5>
+
+        <br/>
     
         <div class="container">
             <div class="row">
@@ -84,6 +95,10 @@
                                         <button type="submit">🗑</button>
                                     </form>
                                 </a>
+                                <a style ="text-align: center">    <!--tombol delete -->
+                                    <a href="{% url 'main:edit_product' product.pk %}">
+                                        <button>Edit</button>
+                                </a>
                             </div>
                         </div>
                         <div class="card-footer bg-transparent border-success">Date added: {{product.date_added}}</div>
@@ -94,8 +109,6 @@
             </div>
         </div>
     
-        <br />
-        <h5>Sesi terakhir login: {{ last_login }}</h5>
     </div>
 
 {% endblock content %}

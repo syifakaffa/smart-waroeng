@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {
+        background: #007bff;
+        background: linear-gradient(to right, #EAD6EE, #A0F1EA);
+        margin-left: 20px; /* Atur margin sebesar 20 piksel ke sisi kiri */
+        margin-right: 20px; /* Atur margin sebesar 20 piksel ke sisi kanan */
+        margin-top: 20px; /* Atur margin sebesar 20 piksel ke sisi atas */
+        margin-bottom: 20px; /* Atur margin sebesar 20 piksel ke sisi bawah */
+    }
+
+</style>
+
+<h1>Edit Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Edit Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
