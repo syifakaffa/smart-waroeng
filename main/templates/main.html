@@ -23,7 +23,14 @@
             font-size: medium;
             justify-content: flex-end;
         }
-        
+        #pesan1{
+            font-family: 'times new roman';
+            font-size: 25px;
+        }
+        #pesan2{
+            font-weight: bold;
+            font-size: 15px;
+        }
 
     </style>
 
@@ -47,6 +54,44 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'main:create_product' %}">Add New Product</a>
                     </li>
+                    <li>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="form" onsubmit="return false;">
+                                            {% csrf_token %}
+                                            <div class="mb-3">
+                                                <label for="name" class="col-form-label">Name:</label>
+                                                <input type="text" class="form-control" id="name" name="name"></input>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="amount" class="col-form-label">Amount:</label>
+                                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="price" class="col-form-label">Price:</label>
+                                                <input type="number" class="form-control" id="price" name="price"></input>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="description" class="col-form-label">Description:</label>
+                                                <textarea class="form-control" id="description" name="description"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+                    </li>
                 </ul>
             </div>
 
@@ -58,57 +103,85 @@
     </nav>
 
     <div class="konten">
-        <h5>Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h5>
+        <h3 id="pesan1">Selamat datang di SmartWaroeng {{name}}! Track stock barang-barang waroeng mu disini!</h5>
+        <br/>
+        <h5 id="pesan2">Kamu menyimpan {{jumlah_item}} item pada aplikasi ini</h4>
 
         <br/>
     
-        <div class="container">
-            <div class="row">
-                <!-- looping sebanyak jumlah product -->
-                {% for product in products %}
-                <div class="col-md-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header text-center">{{product.name}}</div>
+        <div id="cardProduct">
+            <div class="row" id="product_card"></div>
+        </div>
+
+    
+    </div>
+
+    <script>
+        async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
+
+        async function refreshProducts() {
+            const card = document.getElementById("product_card");
+            card.innerHTML=""
+            const products = await getProducts()
+
+            products.forEach((item) => {
+                // Membuat elemen kartu untuk produk
+                const cardElement = document.createElement('div')
+                cardElement.classList.add('card', 'border-dark', 'mb-4', 'mx-1')
+                cardElement.style.maxWidth = '18rem'
+
+                // Mengisi elemen kartu dengan data produk
+                cardElement.innerHTML = `
+                    <div class="card-header text-center">${item.fields.name}</div>
                         <div class="card-body text-dark">
-                            <p class="card-text"> Price: Rp{{product.price}}</p>
-                            <p class="card-text">{{product.description}}</p>
+                            <p class="card-text"> Price: Rp${item.fields.price}</p>
+                            <p class="card-text">${item.fields.description}</p>
                             <div class="d-flex justify-content-between">
-                                <p class="card-text"> Jumlah: {{product.amount}}</p>
-                                <a style ="text-align: center"> <!--tombol tambah 1-->
-                                    <form method="post" action="{% url 'main:add_one' product.id %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                                        <button type="submit">+</button>
-                                    </form>
+                                <p class="card-text"> Jumlah: ${item.fields.amount}</p>
+                                <a style ="text-align: center">    <!--tombol add 1 -->
+                                    <a href="add-one/${item.pk}">
+                                        <button>+</button>
+                                    </a>
                                 </a>
-                                <a style ="text-align: center"> <!--tombol kurang 1-->
-                                    <form method="post" action="{% url 'main:dec_one' product.id %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                                        <button type="submit">-</button>
-                                    </form>
+                                <a style ="text-align: center">    <!--tombol dec 1 -->
+                                    <a href="dec-one/${item.pk}">
+                                        <button>-</button>
                                 </a>
                                 <a style ="text-align: center">    <!--tombol delete -->
-                                    <form method="post" action="{% url 'main:delete_product' product.id %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                                        <button type="submit">🗑</button>
-                                    </form>
+                                    <a href="delete/${item.pk}">
+                                        <button>🗑</button>
                                 </a>
-                                <a style ="text-align: center">    <!--tombol delete -->
-                                    <a href="{% url 'main:edit_product' product.pk %}">
+                                <a style ="text-align: center">    <!--tombol edit -->
+                                    <a href="edit-product/${item.pk}">
                                         <button>Edit</button>
                                 </a>
                             </div>
                         </div>
-                        <div class="card-footer bg-transparent border-success">Date added: {{product.date_added}}</div>
-                    </div>
-                </div>
-        {% endfor %}
-    
-            </div>
-        </div>
-    
-    </div>
+                    <div class="card-footer bg-transparent border-success">Date added: ${item.fields.date_added}</div>
+                `;
+                
+                // Menambahkan elemen kartu ke dalam elemen kartu utama
+                card.appendChild(cardElement);
+            });
+        }
+
+        refreshProducts();
+
+        function addProduct() {
+            fetch("{% url 'main:add_product_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshProducts)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+        document.getElementById("button_add").onclick = addProduct
+
+
+    </script>
 
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from main.models import Product
 from main.forms import ProductForm
 from django.urls import reverse
@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -90,40 +91,33 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def add_one(request, product_id=None):
-    if request.method == 'POST':
+def add_one(request, id):
         # Tambah jumlah stok produk sebanyak 1
-        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
-        product = Product.objects.get(id=product_id) #untuk dapat product
+        product = Product.objects.get(pk = id) #untuk dapat product
 
         product.amount += 1
         product.save()
         return redirect('main:show_main')
     
-    return render(request, 'main.html')
 
-def dec_one(request, product_id=None):
-    if request.method == 'POST':
-        # Tambah jumlah stok produk sebanyak 1
-        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
-        product = Product.objects.get(id=product_id) #untuk dapat product
+def dec_one(request, id):
+    # Tambah jumlah stok produk sebanyak 1
+    product = Product.objects.get(pk=id) #untuk dapat product
 
-        if product.amount > 0:
+    if product.amount > 0:
+        if product.amount==1:
+            product.delete()
+        else:
             product.amount -= 1
             product.save()
-        return redirect('main:show_main')
-    
-    return render(request, 'main.html')
+    return redirect('main:show_main')
 
-def delete_product(request, product_id=None):
-    if request.method == 'POST':
-        #hapus product
-        product_id = request.POST.get('product_id')  # untuk dapat id product yang sesuai tombol
-        product = Product.objects.get(id=product_id) #untuk dapat product
-        product.delete()    #otomatis hapus product
-        return redirect('main:show_main')
-    
-    return render(request, 'main.html')
+def delete_product(request, id):
+    #hapus product
+    product = Product.objects.get(pk=id) #untuk dapat product
+    product.delete()    #otomatis hapus product
+    return redirect('main:show_main')
+
 
 def edit_product(request, id):
     # Get product berdasarkan ID
@@ -140,3 +134,24 @@ def edit_product(request, id):
     context = {'form': form}
     return render(request, "edit_product.html", context)
 
+
+#fungsi untuk mengembalikan data jason:
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_product = Product(name=name, amount=amount, price=price, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
