@@ -5,6 +5,8 @@ NPM     : 2206816430
 Kelas   : PBP-C
 
 # TUGAS 6
+Link Deploy: http://syifa-kaffa-tugas.pbp.cs.ui.ac.id/
+
 1. **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
    * **Synchronus programming**
       - Task akan dieksekusi secara satu persatu sesuai urutan dan prioritas task. Sehingga beberapa task tidak dapat dieksekusi secara bersamaan.
