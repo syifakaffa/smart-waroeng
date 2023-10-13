@@ -4,6 +4,31 @@ NPM     : 2206816430
 
 Kelas   : PBP-C
 
+# TUGAS 6
+1. **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
+   * **Synchronus programming**
+    - Task akan dieksekusi secara satu persatu sesuai urutan dan prioritas task. Sehingga beberapa task tidak dapat dieksekusi secara bersamaan.
+    - Karena task dieksekusi satu persatu, maka waktu yang diperlukan untuk menyelesaikan semua task biasanya lebih lama.
+
+    * **Asynchronus programming**
+    - Tidak terikat pada I/O protocol, sehingga proses eksekusi program dilakukan secara independent dan dapat dilakukan secara bersamaan tanpa harus menunggu tugas sebelumnya selesai.
+    - Waktu total yang diperlukan untuk menyelesaikan task lebih sedikit.
+  
+2. **Penerapan paradigma event-driven programming dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming.**
+   Event-driven programming adalah suatu metode dalam progamming yang alur kerjanya ditentukan oleh event-event yang terjadi. Maksudnya, program dijalankan berdasarkan action atau event tertentu yang dipicu oleh pengguna atau sistem, misalnya klik button. Penerapannya dalam tugas ini, yaitu pada saat button dengan id _button add_ (button add produk yang ada di dalam AJAX saat ingin submit form) diklik, akan langsung menjalankan function addProduct. Berikut kodenya:
+   
+    _document.getElementById("button_add").onclick = addProduct_
+
+3. **Penerapan asynchronous programming pada AJAX**
+   - **Fungsi async dan await** : Fungsi async digunakan untuk menandai fungsi sebagai fungsi yang dapat mengembalikan nilai secara asinkronus, sedangkan fungsi await digunakan untuk menunggu hasil dari fungsi async.
+   - **Callback functions**: Fungsi yang akan dipanggil ketika permintaan selesai, sehinnga kita dapat mengatasi tugas yang harus dijalankan setelah permintaan AJAX selesai secara async.
+   - **XMLHttpRequest atau fetch**: Untuk membuat permintaan HTTP asinkron dalam JavaScript. JavaScript akan terus menjalankan kode lain tanpa harus menunggu hasil request.
+   - Penerapan asynchronous programming pada AJAX yang memproses permintaan ke server secara asinkron, sehingga membuat interface lebih responsif dan interaktif.
+  
+4. 
+
+
+
 # TUGAS 5
 
 1.  **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
