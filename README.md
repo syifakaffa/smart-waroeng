@@ -7,12 +7,12 @@ Kelas   : PBP-C
 # TUGAS 6
 1. **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
    * **Synchronus programming**
-    - Task akan dieksekusi secara satu persatu sesuai urutan dan prioritas task. Sehingga beberapa task tidak dapat dieksekusi secara bersamaan.
-    - Karena task dieksekusi satu persatu, maka waktu yang diperlukan untuk menyelesaikan semua task biasanya lebih lama.
+      - Task akan dieksekusi secara satu persatu sesuai urutan dan prioritas task. Sehingga beberapa task tidak dapat dieksekusi secara bersamaan.
+      - Karena task dieksekusi satu persatu, maka waktu yang diperlukan untuk menyelesaikan semua task biasanya lebih lama.
 
     * **Asynchronus programming**
-    - Tidak terikat pada I/O protocol, sehingga proses eksekusi program dilakukan secara independent dan dapat dilakukan secara bersamaan tanpa harus menunggu tugas sebelumnya selesai.
-    - Waktu total yang diperlukan untuk menyelesaikan task lebih sedikit.
+      - Tidak terikat pada I/O protocol, sehingga proses eksekusi program dilakukan secara independent dan dapat dilakukan secara bersamaan tanpa harus menunggu tugas sebelumnya selesai.
+      - Waktu total yang diperlukan untuk menyelesaikan task lebih sedikit.
   
 2. **Penerapan paradigma event-driven programming dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming.**
    Event-driven programming adalah suatu metode dalam progamming yang alur kerjanya ditentukan oleh event-event yang terjadi. Maksudnya, program dijalankan berdasarkan action atau event tertentu yang dipicu oleh pengguna atau sistem, misalnya klik button. Penerapannya dalam tugas ini, yaitu pada saat button dengan id _button add_ (button add produk yang ada di dalam AJAX saat ingin submit form) diklik, akan langsung menjalankan function addProduct. Berikut kodenya:
@@ -25,9 +25,32 @@ Kelas   : PBP-C
    - **XMLHttpRequest atau fetch**: Untuk membuat permintaan HTTP asinkron dalam JavaScript. JavaScript akan terus menjalankan kode lain tanpa harus menunggu hasil request.
    - Penerapan asynchronous programming pada AJAX yang memproses permintaan ke server secara asinkron, sehingga membuat interface lebih responsif dan interaktif.
   
-4. 
+4. **Perbedaan Fetch API dan library jQuery dalam AJAX:**
+   * **Fetch API:**
+       - Tidak perlu mengunduh library tambahan, sebab Fetch API bagian dari JavScript dan kode nya lebih simple.
+       - Teknologi yang digunakan lebih modern dan banyak komunitas pengembang yang mengupdatenya secara berkala.
+       - Lebih mudah dalam menangani respons asinkron, sebab menggunakan Promise.
+         
+   * **jQuery:**
+       - Untuk program yang kompatibilitas nya tinggi.
+       - Mampu mengatasi masalah terkait perbedaan dalam dukungan AJAX di berbagai browser.
+       - Interface yang ditaarkan lebih kompleks dan tinggi spesifikasinya.
+       - Lebih hemat waktu karena AJAX yang digunakan lebih sederhana untuk UI nya.
 
+    * Terkait padangan saya antara memilih Fetch API atau jQuery, tentu hal ini akan saya pertimbangkan dari tujuan dan spesifikasi aplikasi web saya terlebih dahulu. Jika program yang dibuat lebih modern dan lebih simple, Fetch API akan lebih baik dipilih. Tetapi, jika aplikasi yang dibuat membutuhkan UI yang ciamik dan lebih kompleks, maka saya akan menggunakan jQuery.
 
+5. **Penerapan checklist:**
+   - Membuat fungsi get product json di views.py yang di dalamnya saya implementasikan filter user.
+   - Membuat routing url get product di urls.py
+   - Menghapus card yang ada di section html pada main.html, tetapi menyisakan tag div dengan id product_card agar bisa dipanggil di AJAX.
+   - Membuat script ajax dari function getProduct yang async, dan juga function refreshProduct.
+   - Membuat function add_product ajax di view.py lalu membuat routing urlnya.
+   - Membuat modal bootstrap brupa tabel untuk mengisi form add new product seperti price, dll di html.
+   - Membuat button add new product.
+   - Membuat script ajax POST untuk button addProduct saat submit dan menambahkan fungsi onclick juga saat button add prodcut di tekan.
+   - Melakukan perintah collectstatic di terminal.
+   - Melakukan deploy.
+     
 
 # TUGAS 5
 
