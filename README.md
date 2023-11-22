@@ -10,7 +10,7 @@ Link Deploy: http://syifa-kaffa-tugas.pbp.cs.ui.ac.id/
 1. **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
    * **Synchronus programming**
       - Task akan dieksekusi secara satu persatu sesuai urutan dan prioritas task. Sehingga beberapa task tidak dapat dieksekusi secara bersamaan.
-      - Karena task dieksekusi satu persatu, maka waktu yang diperlukan untuk menyelesaikan semua task biasanya lebih lama.
+      - Karena task dieksekusi satu persatu, maka waktu yang diperlukan untuk menyelesaikan semua task biasanya lebih lama..
 
     * **Asynchronus programming**
       - Tidak terikat pada I/O protocol, sehingga proses eksekusi program dilakukan secara independent dan dapat dilakukan secara bersamaan tanpa harus menunggu tugas sebelumnya selesai.
