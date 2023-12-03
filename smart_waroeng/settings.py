@@ -35,6 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = ['https://syifa-kaffa-tugas.pbp.cs.ui.ac.id']
 
 # Application definition
 
